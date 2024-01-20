@@ -20,8 +20,8 @@ contract Exchange is ERC20 {
     address public tokenAddress;
     address public factoryAddress;
 
-    constructor(address _token) ERC20("Zuniswap-V1", "ZUNI-V1") {
-        require(_token != address(0), "invalid token address");
+    constructor(address _token) ERC20("LP Token", "LP") {
+       require(_token != address(0), "invalid token address");
 
         tokenAddress = _token;
         factoryAddress = msg.sender;

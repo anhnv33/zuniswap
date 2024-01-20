@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import "./Exchange.sol";
 
 contract Factory {
+    event ExchangeCreated(address indexed token, address indexed exchange);
     mapping(address => address) public tokenToExchange;
 
     function createExchange(address _tokenAddress) public returns (address) {
@@ -15,6 +16,8 @@ contract Factory {
 
         Exchange exchange = new Exchange(_tokenAddress);
         tokenToExchange[_tokenAddress] = address(exchange);
+
+        emit ExchangeCreated(_tokenAddress, address(exchange));
 
         return address(exchange);
     }
